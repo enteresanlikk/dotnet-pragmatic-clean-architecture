@@ -5,7 +5,7 @@ using Bookify.Domain.Shared;
 
 namespace Bookify.Domain.Bookings;
 
-internal class Booking : Entity
+public sealed class Booking : Entity
 {
     private Booking(
         Guid id,
@@ -78,7 +78,7 @@ internal class Booking : Entity
             BookingStatus.Reserved,
             utcNow);
 
-        booking.RaiseDomainEvent(new BookingReservedDomainEvent(booking.Id));
+        booking.RaiseDomainEvent(new BookingReservedDomainEvent(booking.Id, userId));
 
         apartment.LastBookedOnUtc = utcNow;
 
