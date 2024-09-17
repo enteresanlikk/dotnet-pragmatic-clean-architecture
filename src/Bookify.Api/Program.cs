@@ -23,10 +23,12 @@ if (app.Environment.IsDevelopment())
 
     //app.SeedData();
 }
+else
+{
+    app.UseCustomExceptionHandler();
+}
 
 app.UseHttpsRedirection();
-
-//app.UseCustomExceptionHandler();
 
 app.UseAuthentication();
 
