@@ -1,6 +1,6 @@
 ﻿namespace Bookify.Domain.Apartments;
 
-public record Adress(
+public record Address(
     string Country,
     string State,
     string ZipCode,

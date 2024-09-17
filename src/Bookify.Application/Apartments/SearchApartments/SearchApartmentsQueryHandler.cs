@@ -6,7 +6,7 @@ using Dapper;
 
 namespace Bookify.Application.Apartments.SearchApartments;
 
-internal sealed record SearchApartmentsQueryHandler
+internal sealed class SearchApartmentsQueryHandler
     : IQueryHandler<SearchApartmentsQuery, IReadOnlyList<ApartmentResponse>>
 {
     private static readonly int[] ActiveBookingStatuses =
@@ -32,7 +32,7 @@ internal sealed record SearchApartmentsQueryHandler
 
         using var connection = _sqlConnectionFactory.CreateConnection();
 
-        const string sql = """"
+        const string sql = """
             SELECT
                 a.id AS Id,
                 a.name AS Name,
@@ -43,7 +43,7 @@ internal sealed record SearchApartmentsQueryHandler
                 a.address_state AS State,
                 a.address_zip_code AS ZipCode,
                 a.address_city AS City,
-                a.address_street AS Street,
+                a.address_street AS Street
             FROM apartments AS a
             WHERE NOT EXISTS
             (
@@ -55,23 +55,24 @@ internal sealed record SearchApartmentsQueryHandler
                     b.duration_end >= @StartDate AND
                     b.status = ANY(@ActiveBookingStatuses)
             )
-            """";
+            """;
 
-        var apartments = await connection.QueryAsync<ApartmentResponse, AddressResponse, ApartmentResponse>(
-            sql,
-            (apartment, address) =>
-            {
-                apartment.Address = address;
+        var apartments = await connection
+            .QueryAsync<ApartmentResponse, AddressResponse, ApartmentResponse>(
+                sql,
+                (apartment, address) =>
+                {
+                    apartment.Address = address;
 
-                return apartment;
-            },
-            new
-            {
-                request.StartDate,
-                request.EndDate,
-                ActiveBookingStatuses,
-            },
-            splitOn: "Country");
+                    return apartment;
+                },
+                new
+                {
+                    request.StartDate,
+                    request.EndDate,
+                    ActiveBookingStatuses
+                },
+                splitOn: "Country");
 
         return apartments.ToList();
     }

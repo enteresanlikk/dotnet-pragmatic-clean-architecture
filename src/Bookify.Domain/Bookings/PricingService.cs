@@ -14,7 +14,7 @@ public class PricingService
             currency);
 
         decimal percentageUpCharge = 0;
-        foreach (var amenity in apartment.Amenitities)
+        foreach (var amenity in apartment.Amenities)
         {
             percentageUpCharge += amenity switch
             {

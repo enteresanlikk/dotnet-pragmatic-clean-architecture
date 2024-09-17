@@ -9,25 +9,29 @@ public sealed class Apartment : Entity
         Guid id,
         Name name,
         Description description,
-        Adress adress,
+        Address address,
         Money price,
         Money cleaningFee,
-        List<Amenity> amenitities)
+        List<Amenity> amenities)
         : base(id)
     {
         Name = name;
         Description = description;
-        Adress = adress;
+        Address = address;
         Price = price;
         CleaningFee = cleaningFee;
-        Amenitities = amenitities;
+        Amenities = amenities;
+    }
+
+    private Apartment()
+    {
     }
 
     public Name Name { get; private set; }
 
     public Description Description { get; private set; }
 
-    public Adress Adress { get; private set; }
+    public Address Address { get; private set; }
 
     public Money Price { get; private set; }
 
@@ -35,5 +39,5 @@ public sealed class Apartment : Entity
 
     public DateTime? LastBookedOnUtc { get; internal set; }
 
-    public List<Amenity> Amenitities { get; private set; } = new();
+    public List<Amenity> Amenities { get; private set; } = new();
 }
