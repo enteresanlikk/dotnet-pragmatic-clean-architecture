@@ -6,8 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace Bookify.Api.Controllers.Apartments;
 
 [Authorize]
-[Route("api/apartments")]
 [ApiController]
+[Route("api/apartments")]
 public class ApartmentsController : ControllerBase
 {
     private readonly ISender _sender;

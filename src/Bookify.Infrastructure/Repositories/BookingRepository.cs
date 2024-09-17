@@ -13,8 +13,8 @@ internal sealed class BookingRepository : Repository<Booking>, IBookingRepositor
         BookingStatus.Completed,
     };
 
-    public BookingRepository(ApplicationDbContext dbDontext)
-        : base(dbDontext)
+    public BookingRepository(ApplicationDbContext dbContext)
+        : base(dbContext)
     {
     }
 
@@ -23,7 +23,7 @@ internal sealed class BookingRepository : Repository<Booking>, IBookingRepositor
         DateRange duration,
         CancellationToken cancellationToken = default)
     {
-        return await DbDontext
+        return await DbContext
             .Set<Booking>()
             .AnyAsync(
                 booking =>

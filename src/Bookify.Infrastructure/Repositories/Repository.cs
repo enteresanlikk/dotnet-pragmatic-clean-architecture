@@ -6,24 +6,24 @@ namespace Bookify.Infrastructure.Repositories;
 internal abstract class Repository<T>
     where T : Entity
 {
-    protected readonly ApplicationDbContext DbDontext;
+    protected readonly ApplicationDbContext DbContext;
 
-    protected Repository(ApplicationDbContext dbDontext)
+    protected Repository(ApplicationDbContext dbContext)
     {
-        DbDontext = dbDontext;
+        DbContext = dbContext;
     }
 
     public async Task<T?> GetByIdAsync(
         Guid id,
         CancellationToken cancellationToken = default)
     {
-        return await DbDontext
+        return await DbContext
             .Set<T>()
             .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
     }
 
-    public void Add(T entity)
+    public virtual void Add(T entity)
     {
-        DbDontext.Add(entity);
+        DbContext.Add(entity);
     }
 }
