@@ -20,7 +20,6 @@ public class UsersController : ControllerBase
         _sender = sender;
     }
 
-    [HasPermission(Permissions.USERS_READ)]
     [HttpGet("me")]
     public async Task<IActionResult> GetLoggedInUser(CancellationToken cancellationToken)
     {
