@@ -37,11 +37,11 @@ public class ValidationBehavior<TRequest, TResponse>
                 validationFailure.ErrorMessage))
             .ToList();
 
-        if (!validationErrors.Any())
+        if (validationErrors.Any())
         {
-            return await next();
+            throw new Exceptions.ValidationException(validationErrors);
         }
 
-        throw new Exceptions.ValidationException(validationErrors);
+        return await next();
     }
 }

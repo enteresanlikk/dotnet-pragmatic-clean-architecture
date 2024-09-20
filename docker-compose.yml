@@ -32,7 +32,7 @@ services:
       - KEYCLOAK_ADMIN_PASSWORD=admin
     volumes:
       - ./.containers/identity:/opt/keycloak/data
-      - ./.files/bookify-realm-export.json:/opt/keycloak/data/import/realm.json
+      - ./.files:/opt/keycloak/data/import
     ports:
       - 18080:8080
   
@@ -50,4 +50,4 @@ services:
     container_name: Bookify.Redis
     restart: always
     ports:
-      - 6379:6379 
+      - 6379:6379

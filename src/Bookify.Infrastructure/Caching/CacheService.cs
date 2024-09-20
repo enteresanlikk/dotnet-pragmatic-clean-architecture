@@ -1,4 +1,4 @@
-﻿using Bookify.Application.Caching;
+﻿using Bookify.Application.Abstractions.Caching;
 using Microsoft.Extensions.Caching.Distributed;
 using System.Buffers;
 using System.Text.Json;

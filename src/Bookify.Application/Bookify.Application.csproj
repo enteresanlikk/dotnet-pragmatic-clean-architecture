@@ -11,11 +11,15 @@
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.10.0" />
     <PackageReference Include="MediatR" Version="12.4.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />
-    <PackageReference Include="Serilog" Version="4.0.0" />
+    <PackageReference Include="Serilog" Version="4.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Bookify.Domain\Bookify.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  <InternalsVisibleTo Include="Bookify.Application.UnitTests" />
   </ItemGroup>
 
 </Project>

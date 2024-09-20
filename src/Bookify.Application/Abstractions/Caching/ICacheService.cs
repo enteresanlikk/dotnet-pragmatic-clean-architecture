@@ -1,4 +1,4 @@
-﻿namespace Bookify.Application.Caching;
+﻿namespace Bookify.Application.Abstractions.Caching;
 
 public interface ICacheService
 {

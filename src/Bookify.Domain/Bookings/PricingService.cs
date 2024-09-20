@@ -25,14 +25,14 @@ public class PricingService
             };
         }
 
-        Money amenitiesUpCharge = Money.Zero();
+        Money amenitiesUpCharge = Money.Zero(currency);
         if (percentageUpCharge > 0) {
             amenitiesUpCharge = new Money(
                 pricedForPeriod.Amount * percentageUpCharge,
                 currency);
         }
 
-        Money totalPrice = Money.Zero();
+        Money totalPrice = Money.Zero(currency);
 
         totalPrice += pricedForPeriod;
 

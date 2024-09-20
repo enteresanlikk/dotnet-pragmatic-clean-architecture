@@ -1,9 +1,9 @@
 ﻿using Asp.Versioning;
 using Bookify.Application.Abstractions.Authentication;
+using Bookify.Application.Abstractions.Caching;
 using Bookify.Application.Abstractions.Clock;
 using Bookify.Application.Abstractions.Data;
 using Bookify.Application.Abstractions.Email;
-using Bookify.Application.Caching;
 using Bookify.Domain.Abstractions;
 using Bookify.Domain.Apartments;
 using Bookify.Domain.Bookings;
